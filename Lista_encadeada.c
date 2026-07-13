@@ -62,7 +62,7 @@ void inserir_posicao(int valor, int posição){
 
 void inserir_posicao_recursivo(no *atual, int valor, int posicao){
     
-    if (lista == NULL){
+    if (atual == NULL){
         printf("A posição é inválida!\n");
         return;
     }
@@ -86,6 +86,12 @@ void inserir_posicao_ordenada_recursivo(no *atual, no *novo){
     
     if(lista == NULL){
         inserir_inicio(novo->dado);
+        return;
+    }
+
+    if(atual->prox == NULL){
+        atual->prox = novo;
+        novo->prox = NULL;
         return;
     }
 
@@ -136,8 +142,7 @@ void consultar_pos(int posição){
         return;
     }
 
-    no *atual = (no*) malloc(sizeof(no));
-    atual = lista;
+    no *atual = lista;
     for(int contador = 1; atual != NULL; contador++){
         if(contador == posição){
             printf("Dados dessa posição:\n");
@@ -291,4 +296,4 @@ int main(){
                 return 0;
         }
     }
-} 
+}
